@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %} 
+
+{% block content %} 
+<h1 class="text-center">Sign Up</h1>
+<p class="lead text-center">Sign up below to leave a feedback! Already have an account? Log in <a href="/login">here</a>.</p>
+
+<form method="POST">
+    {% include '_form.html' %} 
+    <button class="btn btn-success ml-4" type="submit">Create an account</button>
+</form>
+{% endblock %}
