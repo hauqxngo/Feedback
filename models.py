@@ -22,6 +22,8 @@ class User(db.Model):
     first_name = db.Column(db.String(30))
     last_name = db.Column(db.String(30))
 
+    feedback = db.relationship('Feedback')
+
     @property
     def full_name(self):
         """Return full name of user"""
@@ -45,7 +47,7 @@ class User(db.Model):
         Return user if valid; else return False."""
 
         u = User.query.filter_by(username=username).first()
- 
+
         if u and bcrypt.check_password_hash(u.password, pwd):
             # return user instance
             return u 
@@ -61,6 +63,8 @@ class Feedback(db.Model):
     title = db.Column(db.String(100), nullable=False)
     content = db.Column(db.Text, nullable=False)
     username = db.Column(db.String(20), db.ForeignKey('users.username'), nullable=False)
+
+    users = db.relationship('User')
     
 
 
